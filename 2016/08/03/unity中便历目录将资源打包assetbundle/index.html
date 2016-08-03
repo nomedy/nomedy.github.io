@@ -4,27 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>way from now | On My Way</title>
+  <title>On My Way</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="感谢下面的支持
-http://yebujimo.com/2015/03/15/Mac下搭建Hexo博客教程/
-http://sunwhut.com/2015/10/30/buildBlog/?hmsr=toutiao.io&amp;amp;utm_medium=toutiao.io&amp;amp;utm_source=toutiao.io
-http://www.jianshu.com/p/fd878edb95e">
+  <meta name="description" content="###Unity中便历目录将资源打包Assetbundle###            string scenePath = Application.dataPath + “/Scenes”;            DirectoryInfo dir = new DirectoryInfo (scenePath);            List fileInfos = DirSearch (di">
 <meta property="og:type" content="article">
-<meta property="og:title" content="way from now">
-<meta property="og:url" content="http://yoursite.com/2016/07/02/way-from-now/index.html">
+<meta property="og:title" content="On My Way">
+<meta property="og:url" content="http://yoursite.com/2016/08/03/unity中便历目录将资源打包assetbundle/index.html">
 <meta property="og:site_name" content="On My Way">
-<meta property="og:description" content="感谢下面的支持
-http://yebujimo.com/2015/03/15/Mac下搭建Hexo博客教程/
-http://sunwhut.com/2015/10/30/buildBlog/?hmsr=toutiao.io&amp;amp;utm_medium=toutiao.io&amp;amp;utm_source=toutiao.io
-http://www.jianshu.com/p/fd878edb95e">
-<meta property="og:updated_time" content="2016-07-02T09:34:15.000Z">
+<meta property="og:description" content="###Unity中便历目录将资源打包Assetbundle###            string scenePath = Application.dataPath + “/Scenes”;            DirectoryInfo dir = new DirectoryInfo (scenePath);            List fileInfos = DirSearch (di">
+<meta property="og:updated_time" content="2016-08-03T12:43:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="way from now">
-<meta name="twitter:description" content="感谢下面的支持
-http://yebujimo.com/2015/03/15/Mac下搭建Hexo博客教程/
-http://sunwhut.com/2015/10/30/buildBlog/?hmsr=toutiao.io&amp;amp;utm_medium=toutiao.io&amp;amp;utm_source=toutiao.io
-http://www.jianshu.com/p/fd878edb95e">
+<meta name="twitter:title" content="On My Way">
+<meta name="twitter:description" content="###Unity中便历目录将资源打包Assetbundle###            string scenePath = Application.dataPath + “/Scenes”;            DirectoryInfo dir = new DirectoryInfo (scenePath);            List fileInfos = DirSearch (di">
   
     <link rel="alternative" href="/atom.xml" title="On My Way" type="application/atom+xml">
   
@@ -206,11 +197,11 @@ http://www.jianshu.com/p/fd878edb95e">
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-way-from-now" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-unity中便历目录将资源打包assetbundle" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/07/02/way-from-now/" class="article-date">
-  	<time datetime="2016-07-02T09:23:32.000Z" itemprop="datePublished">2016-07-02</time>
+      <a href="/2016/08/03/unity中便历目录将资源打包assetbundle/" class="article-date">
+  	<time datetime="2016-08-03T12:43:15.000Z" itemprop="datePublished">2016-08-03</time>
 </a>
     </div>
   
@@ -219,30 +210,9 @@ http://www.jianshu.com/p/fd878edb95e">
       <input type="hidden" class="isFancy" />
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      way from now
-    </h1>
-  
-
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-        
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>感谢下面的支持</p>
-<p><a href="http://yebujimo.com/2015/03/15/Mac下搭建Hexo博客教程/" target="_blank" rel="external">http://yebujimo.com/2015/03/15/Mac下搭建Hexo博客教程/</a></p>
-<p><a href="http://sunwhut.com/2015/10/30/buildBlog/?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="external">http://sunwhut.com/2015/10/30/buildBlog/?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io</a></p>
-<p><a href="http://www.jianshu.com/p/fd878edb95e7" target="_blank" rel="external">http://www.jianshu.com/p/fd878edb95e7</a></p>
+        <p>###Unity中便历目录将资源打包Assetbundle###<br>            string scenePath = Application.dataPath + “/Scenes”;<br>            DirectoryInfo dir = new DirectoryInfo (scenePath);<br>            List<fileinfo> fileInfos = DirSearch (dir,”*.unity”);<br>            string splitString = “Assets/“;<br>            foreach (FileInfo fileInfo in fileInfos) {<br>                string fullName = fileInfo.FullName;<br>                fullName = fullName.Substring (fullName.LastIndexOf (splitString) );<br>                string fileName = Path.GetFileNameWithoutExtension (fileInfo.FullName);<br>                AssetImporter importer = AssetImporter.GetAtPath(fullName);<br>                if (Libs.Config.AssetBundleExcludeScenes.Contains (fileName)) {<br>                    importer.assetBundleName = “”;<br>                } else {<br>                    importer.assetBundleName = fileName;<br>                }<br>                importer.SaveAndReimport ();<br>            }</fileinfo></p>
 
       
     </div>
@@ -252,15 +222,11 @@ http://www.jianshu.com/p/fd878edb95e">
     
 <nav id="article-nav">
   
-    <a href="/2016/08/03/unity中便历目录将资源打包assetbundle/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
+    <a href="/2016/07/02/way-from-now/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">way from now</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
@@ -293,7 +259,7 @@ http://www.jianshu.com/p/fd878edb95e">
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="way-from-now" data-title="way from now" data-url="http://yoursite.com/2016/07/02/way-from-now/"></div>
+	<div class="ds-thread" data-thread-key="unity中便历目录将资源打包assetbundle" data-title="" data-url="http://yoursite.com/2016/08/03/unity中便历目录将资源打包assetbundle/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
