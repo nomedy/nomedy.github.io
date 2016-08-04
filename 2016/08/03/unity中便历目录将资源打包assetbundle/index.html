@@ -6,16 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>On My Way</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="###Unity中便历目录将资源打包Assetbundle###12345678910111213141516string scenePath = Application.dataPath + &amp;quot;/Scenes&amp;quot;;DirectoryInfo dir = new DirectoryInfo (scenePath);List&amp;lt;FileInfo&amp;gt; fileInfos =">
+  <meta name="description" content="title:Unity中将目录中资源打包Assetbundle12345678910111213141516string scenePath = Application.dataPath + &amp;quot;/Scenes&amp;quot;;DirectoryInfo dir = new DirectoryInfo (scenePath);List&amp;lt;FileInfo&amp;gt; fileInfos =">
 <meta property="og:type" content="article">
 <meta property="og:title" content="On My Way">
 <meta property="og:url" content="http://yoursite.com/2016/08/03/unity中便历目录将资源打包assetbundle/index.html">
 <meta property="og:site_name" content="On My Way">
-<meta property="og:description" content="###Unity中便历目录将资源打包Assetbundle###12345678910111213141516string scenePath = Application.dataPath + &amp;quot;/Scenes&amp;quot;;DirectoryInfo dir = new DirectoryInfo (scenePath);List&amp;lt;FileInfo&amp;gt; fileInfos =">
-<meta property="og:updated_time" content="2016-08-04T08:54:44.000Z">
+<meta property="og:description" content="title:Unity中将目录中资源打包Assetbundle12345678910111213141516string scenePath = Application.dataPath + &amp;quot;/Scenes&amp;quot;;DirectoryInfo dir = new DirectoryInfo (scenePath);List&amp;lt;FileInfo&amp;gt; fileInfos =">
+<meta property="og:updated_time" content="2016-08-04T09:05:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="On My Way">
-<meta name="twitter:description" content="###Unity中便历目录将资源打包Assetbundle###12345678910111213141516string scenePath = Application.dataPath + &amp;quot;/Scenes&amp;quot;;DirectoryInfo dir = new DirectoryInfo (scenePath);List&amp;lt;FileInfo&amp;gt; fileInfos =">
+<meta name="twitter:description" content="title:Unity中将目录中资源打包Assetbundle12345678910111213141516string scenePath = Application.dataPath + &amp;quot;/Scenes&amp;quot;;DirectoryInfo dir = new DirectoryInfo (scenePath);List&amp;lt;FileInfo&amp;gt; fileInfos =">
   
     <link rel="alternative" href="/atom.xml" title="On My Way" type="application/atom+xml">
   
@@ -212,7 +212,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Unity中便历目录将资源打包Assetbundle"><a href="#Unity中便历目录将资源打包Assetbundle" class="headerlink" title="###Unity中便历目录将资源打包Assetbundle###"></a>###Unity中便历目录将资源打包Assetbundle###</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">string scenePath = Application.dataPath + &quot;/Scenes&quot;;</div><div class="line">DirectoryInfo dir = new DirectoryInfo (scenePath);</div><div class="line">List&lt;FileInfo&gt; fileInfos = DirSearch (dir,&quot;*.unity&quot;);</div><div class="line">string splitString = &quot;Assets/&quot;;</div><div class="line">foreach (FileInfo fileInfo in fileInfos) &#123;</div><div class="line">	string fullName = fileInfo.FullName;</div><div class="line">	fullName = fullName.Substring (fullName.LastIndexOf (splitString) );</div><div class="line">	string fileName = Path.GetFileNameWithoutExtension (fileInfo.FullName);</div><div class="line">	AssetImporter importer = AssetImporter.GetAtPath(fullName);</div><div class="line">	if (Libs.Config.AssetBundleExcludeScenes.Contains (fileName)) &#123;</div><div class="line">		importer.assetBundleName = &quot;&quot;;</div><div class="line">	&#125; else &#123;</div><div class="line">		importer.assetBundleName = fileName;</div><div class="line">	&#125;</div><div class="line">	importer.SaveAndReimport ();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <hr>
+<h2 id="title-Unity中将目录中资源打包Assetbundle"><a href="#title-Unity中将目录中资源打包Assetbundle" class="headerlink" title="title:Unity中将目录中资源打包Assetbundle"></a>title:Unity中将目录中资源打包Assetbundle</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">string scenePath = Application.dataPath + &quot;/Scenes&quot;;</div><div class="line">DirectoryInfo dir = new DirectoryInfo (scenePath);</div><div class="line">List&lt;FileInfo&gt; fileInfos = DirSearch (dir,&quot;*.unity&quot;);</div><div class="line">string splitString = &quot;Assets/&quot;;</div><div class="line">foreach (FileInfo fileInfo in fileInfos) &#123;</div><div class="line">	string fullName = fileInfo.FullName;</div><div class="line">	fullName = fullName.Substring (fullName.LastIndexOf (splitString) );</div><div class="line">	string fileName = Path.GetFileNameWithoutExtension (fileInfo.FullName);</div><div class="line">	AssetImporter importer = AssetImporter.GetAtPath(fullName);</div><div class="line">	if (Libs.Config.AssetBundleExcludeScenes.Contains (fileName)) &#123;</div><div class="line">		importer.assetBundleName = &quot;&quot;;</div><div class="line">	&#125; else &#123;</div><div class="line">		importer.assetBundleName = fileName;</div><div class="line">	&#125;</div><div class="line">	importer.SaveAndReimport ();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
