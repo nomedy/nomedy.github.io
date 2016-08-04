@@ -195,6 +195,47 @@
 
       <div class="body-wrap">
   
+    <article id="post-unity查找某个资源的引用位置" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/04/unity查找某个资源的引用位置/" class="article-date">
+  	<time datetime="2016-08-04T08:48:04.000Z" itemprop="datePublished">2016-08-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Unity查找某个资源的引用位置"><a href="#Unity查找某个资源的引用位置" class="headerlink" title="##Unity查找某个资源的引用位置##"></a>##Unity查找某个资源的引用位置##</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">EditorSettings.serializationMode = SerializationMode.ForceText;</div><div class="line">string path = AssetDatabase.GetAssetPath(Selection.activeObject);</div><div class="line">if (!string.IsNullOrEmpty(path))</div><div class="line">&#123;</div><div class="line">	string guid = AssetDatabase.AssetPathToGUID(path);</div><div class="line">	List&lt;string&gt; withoutExtensions = new List&lt;string&gt;()&#123;&quot;.prefab&quot;,&quot;.unity&quot;,&quot;.mat&quot;,&quot;.asset&quot;&#125;;</div><div class="line">	string[] files = Directory.GetFiles(Application.dataPath, &quot;*.*&quot;, SearchOption.AllDirectories)</div><div class="line">		.Where(s =&gt; withoutExtensions.Contains(Path.GetExtension(s).ToLower())).ToArray();</div><div class="line">	int startIndex = 0;</div><div class="line">	for (; startIndex &lt; files.Length; startIndex++) &#123;				string file = files [startIndex];</div><div class="line">		 EditorUtility.DisplayCancelableProgressBar (&quot;匹配资源中&quot;, file, (float)startIndex / (float)files.Length);</div><div class="line">		if (Regex.IsMatch (File.ReadAllText (file), guid)) &#123;</div><div class="line">			Debug.Log (file, AssetDatabase.LoadAssetAtPath&lt;Object&gt; (GetRelativeAssetsPath (file)));</div><div class="line">		&#125;			</div><div class="line">	&#125;		 </div><div class="line">	EditorUtility.ClearProgressBar ();</div><div class="line">	startIndex = 0;</div><div class="line">	Debug.Log (&quot;匹配结束&quot;);	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-unity中便历目录将资源打包assetbundle" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -210,7 +251,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>###Unity中便历目录将资源打包Assetbundle###<br>            string scenePath = Application.dataPath + “/Scenes”;<br>            DirectoryInfo dir = new DirectoryInfo (scenePath);<br>            List<fileinfo> fileInfos = DirSearch (dir,”*.unity”);<br>            string splitString = “Assets/“;<br>            foreach (FileInfo fileInfo in fileInfos) {<br>                string fullName = fileInfo.FullName;<br>                fullName = fullName.Substring (fullName.LastIndexOf (splitString) );<br>                string fileName = Path.GetFileNameWithoutExtension (fileInfo.FullName);<br>                AssetImporter importer = AssetImporter.GetAtPath(fullName);<br>                if (Libs.Config.AssetBundleExcludeScenes.Contains (fileName)) {<br>                    importer.assetBundleName = “”;<br>                } else {<br>                    importer.assetBundleName = fileName;<br>                }<br>                importer.SaveAndReimport ();<br>            }</fileinfo></p>
+        <h2 id="Unity中便历目录将资源打包Assetbundle"><a href="#Unity中便历目录将资源打包Assetbundle" class="headerlink" title="###Unity中便历目录将资源打包Assetbundle###"></a>###Unity中便历目录将资源打包Assetbundle###</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">string scenePath = Application.dataPath + &quot;/Scenes&quot;;</div><div class="line">DirectoryInfo dir = new DirectoryInfo (scenePath);</div><div class="line">List&lt;FileInfo&gt; fileInfos = DirSearch (dir,&quot;*.unity&quot;);</div><div class="line">string splitString = &quot;Assets/&quot;;</div><div class="line">foreach (FileInfo fileInfo in fileInfos) &#123;</div><div class="line">	string fullName = fileInfo.FullName;</div><div class="line">	fullName = fullName.Substring (fullName.LastIndexOf (splitString) );</div><div class="line">	string fileName = Path.GetFileNameWithoutExtension (fileInfo.FullName);</div><div class="line">	AssetImporter importer = AssetImporter.GetAtPath(fullName);</div><div class="line">	if (Libs.Config.AssetBundleExcludeScenes.Contains (fileName)) &#123;</div><div class="line">		importer.assetBundleName = &quot;&quot;;</div><div class="line">	&#125; else &#123;</div><div class="line">		importer.assetBundleName = fileName;</div><div class="line">	&#125;</div><div class="line">	importer.SaveAndReimport ();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
