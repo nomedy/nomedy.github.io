@@ -195,6 +195,115 @@
 
       <div class="body-wrap">
   
+    <article id="post-Unity中查找未打成图集的图片" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/Unity中查找未打成图集的图片/" class="article-date">
+  	<time datetime="2016-08-05T09:54:12.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/05/Unity中查找未打成图集的图片/">Unity中查找未打成图集的图片</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>写了个Unity小插件，能够遍历目录将没有打成图集的图片搜索出来<br>WithOutFolders为不搜索的目录<br>ConatainLastExtensions为搜索图片格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">using UnityEngine;</div><div class="line">using System.Collections;</div><div class="line">using UnityEditor;</div><div class="line">using System.IO;</div><div class="line">using System.Collections.Generic;</div><div class="line">using System.Linq;</div><div class="line">public class FindUnDoTag  &#123;</div><div class="line">	[MenuItem(&quot;Libs/查找未打成图集的图片&quot;)]</div><div class="line">	private static void FindUnTagResource()</div><div class="line">	&#123;</div><div class="line">		List&lt;string&gt; WithOutFolders = new List&lt;string&gt;()&#123;&quot;Assets/Libs&quot;,&quot;Assets/Platforms&quot;,&quot;Assets/Plugins&quot;,&quot;Assets/Resources&quot;&#125;;</div><div class="line">		List&lt;string&gt; ConatainLastExtensions = new List&lt;string&gt;()&#123;&quot;.png&quot;&#125;;</div><div class="line">		string[] files = Directory.GetFiles (Application.dataPath, &quot;*.*&quot;, SearchOption.AllDirectories)</div><div class="line">			.Where (s =&gt;&#123; </div><div class="line">				for(int k=0;k&lt;WithOutFolders.Count;k++)&#123;</div><div class="line">					if(s.Contains(WithOutFolders[k]))&#123;</div><div class="line">						return false;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">				return ConatainLastExtensions.Contains (Path.GetExtension (s).ToLower ());</div><div class="line">			&#125;).ToArray ();</div><div class="line">		string splitString = &quot;Assets/&quot;;</div><div class="line">		for (int i = 0; i &lt; files.Length; i++) &#123;</div><div class="line">			string fullName = files [i].Substring (files [i].IndexOf(splitString));</div><div class="line">			TextureImporter importer = AssetImporter.GetAtPath(fullName) as TextureImporter;</div><div class="line">//			TextureImporter textureImporter = (TextureImporter)TextureImporter.GetAtPath (fullName);</div><div class="line">			if (importer.spritePackingTag == &quot;&quot;) &#123;</div><div class="line">				Log.Error (fullName);</div><div class="line">			&#125;</div><div class="line">	</div><div class="line">		&#125;</div><div class="line">		Log.Trace (&quot;查找结束&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Unity中Material修改shader后避免修改Mat文件" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/Unity中Material修改shader后避免修改Mat文件/" class="article-date">
+  	<time datetime="2016-08-05T08:14:07.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/05/Unity中Material修改shader后避免修改Mat文件/">Unity中Material修改shader后避免修改Mat文件</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在Unity中经常会出现动态修改Material的shader属性后Mat文件随之改变，每次提交svn或git后总要先重置一下，方法可为在Start方法中新增一个Material，然后修改这个Material。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#if UNITY_EDITOR</div><div class="line">Material cachedMat;</div><div class="line">if(!_cache.TryGetValue(image.material,out cachedMat))</div><div class="line">&#123;</div><div class="line">	cachedMat = new Material(image.material);</div><div class="line">	_cache.Add(image.material,cachedMat);</div><div class="line">&#125;</div><div class="line">material =cachedMat;</div></pre></td></tr></table></figure>
+<p>具体详情可以参照<a href="http://answers.unity3d.com/questions/396347/how-to-stop-renderersharedmaterialsetcolor-writing.html" target="_blank" rel="external">网站一</a></p>
+<p>以及<a href="http://answers.unity3d.com/questions/487908/modifying-material-modifies-the-actual-mat-file.html" target="_blank" rel="external">网站二</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-unity查找某个资源的引用位置" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -275,6 +384,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">string scenePath = Application.dataPath + &quot;/Scenes&quot;;</div><div class="line">DirectoryInfo dir = new DirectoryInfo (scenePath);</div><div class="line">List&lt;FileInfo&gt; fileInfos = DirSearch (dir,&quot;*.unity&quot;);</div><div class="line">string splitString = &quot;Assets/&quot;;</div><div class="line">foreach (FileInfo fileInfo in fileInfos) &#123;</div><div class="line">	string fullName = fileInfo.FullName;</div><div class="line">	fullName = fullName.Substring (fullName.LastIndexOf (splitString) );</div><div class="line">	string fileName = Path.GetFileNameWithoutExtension (fileInfo.FullName);</div><div class="line">	AssetImporter importer = AssetImporter.GetAtPath(fullName);</div><div class="line">	if (Libs.Config.AssetBundleExcludeScenes.Contains (fileName)) &#123;</div><div class="line">		importer.assetBundleName = &quot;&quot;;</div><div class="line">	&#125; else &#123;</div><div class="line">		importer.assetBundleName = fileName;</div><div class="line">	&#125;</div><div class="line">	importer.SaveAndReimport ();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">private static List&lt;FileInfo&gt; DirSearch(DirectoryInfo d, string searchFor)</div><div class="line">&#123;</div><div class="line">	List&lt;FileInfo&gt; founditems = d.GetFiles(searchFor).ToList();</div><div class="line">	// Add (by recursing) subdirectory items.</div><div class="line">	DirectoryInfo[] dis = d.GetDirectories();</div><div class="line">	foreach (DirectoryInfo di in dis)</div><div class="line">		founditems.AddRange(DirSearch(di, searchFor));</div><div class="line">	return (founditems);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
