@@ -4,21 +4,30 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Unity中查找未打成图集的图片 | On My Way</title>
+  <title>Unity小结(持续更新) | On My Way</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="写了个Unity小插件，能够遍历目录将没有打成图集的图片搜索出来WithOutFolders为不搜索的目录ConatainLastExtensions为搜索图片格式
-12345678910111213141516171819202122232425262728293031323334using UnityEngine;using System.Collections;using UnityEdit">
+  <meta name="description" content="1.Resources資料夾裡的資源越多，程式的啟動畫面時間就越長。 链接
+2.    Draw Call
+Batching is only possible for objects that share the same material pointer.
+Batching doesn&amp;apos;t work on objects that have multiple materials.
+Im">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Unity中查找未打成图集的图片">
-<meta property="og:url" content="http://yoursite.com/2016/08/05/Unity中查找未打成图集的图片/index.html">
+<meta property="og:title" content="Unity小结(持续更新)">
+<meta property="og:url" content="http://yoursite.com/2016/08/08/Unity小结-持续更新/index.html">
 <meta property="og:site_name" content="On My Way">
-<meta property="og:description" content="写了个Unity小插件，能够遍历目录将没有打成图集的图片搜索出来WithOutFolders为不搜索的目录ConatainLastExtensions为搜索图片格式
-12345678910111213141516171819202122232425262728293031323334using UnityEngine;using System.Collections;using UnityEdit">
-<meta property="og:updated_time" content="2016-08-05T09:59:30.000Z">
+<meta property="og:description" content="1.Resources資料夾裡的資源越多，程式的啟動畫面時間就越長。 链接
+2.    Draw Call
+Batching is only possible for objects that share the same material pointer.
+Batching doesn&amp;apos;t work on objects that have multiple materials.
+Im">
+<meta property="og:updated_time" content="2016-08-10T05:26:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Unity中查找未打成图集的图片">
-<meta name="twitter:description" content="写了个Unity小插件，能够遍历目录将没有打成图集的图片搜索出来WithOutFolders为不搜索的目录ConatainLastExtensions为搜索图片格式
-12345678910111213141516171819202122232425262728293031323334using UnityEngine;using System.Collections;using UnityEdit">
+<meta name="twitter:title" content="Unity小结(持续更新)">
+<meta name="twitter:description" content="1.Resources資料夾裡的資源越多，程式的啟動畫面時間就越長。 链接
+2.    Draw Call
+Batching is only possible for objects that share the same material pointer.
+Batching doesn&amp;apos;t work on objects that have multiple materials.
+Im">
   
     <link rel="alternative" href="/atom.xml" title="On My Way" type="application/atom+xml">
   
@@ -200,11 +209,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-Unity中查找未打成图集的图片" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Unity小结-持续更新" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/08/05/Unity中查找未打成图集的图片/" class="article-date">
-  	<time datetime="2016-08-05T09:54:12.000Z" itemprop="datePublished">2016-08-05</time>
+      <a href="/2016/08/08/Unity小结-持续更新/" class="article-date">
+  	<time datetime="2016-08-08T03:22:32.000Z" itemprop="datePublished">2016-08-08</time>
 </a>
     </div>
   
@@ -217,7 +226,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Unity中查找未打成图集的图片
+      Unity小结(持续更新)
     </h1>
   
 
@@ -233,8 +242,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>写了个Unity小插件，能够遍历目录将没有打成图集的图片搜索出来<br>WithOutFolders为不搜索的目录<br>ConatainLastExtensions为搜索图片格式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">using UnityEngine;</div><div class="line">using System.Collections;</div><div class="line">using UnityEditor;</div><div class="line">using System.IO;</div><div class="line">using System.Collections.Generic;</div><div class="line">using System.Linq;</div><div class="line">public class FindUnDoTag  &#123;</div><div class="line">	[MenuItem(&quot;Libs/查找未打成图集的图片&quot;)]</div><div class="line">	private static void FindUnTagResource()</div><div class="line">	&#123;</div><div class="line">		List&lt;string&gt; WithOutFolders = new List&lt;string&gt;()&#123;&quot;Assets/Libs&quot;,&quot;Assets/Platforms&quot;,&quot;Assets/Plugins&quot;,&quot;Assets/Resources&quot;&#125;;</div><div class="line">		List&lt;string&gt; ConatainLastExtensions = new List&lt;string&gt;()&#123;&quot;.png&quot;&#125;;</div><div class="line">		string[] files = Directory.GetFiles (Application.dataPath, &quot;*.*&quot;, SearchOption.AllDirectories)</div><div class="line">			.Where (s =&gt;&#123; </div><div class="line">				for(int k=0;k&lt;WithOutFolders.Count;k++)&#123;</div><div class="line">					if(s.Contains(WithOutFolders[k]))&#123;</div><div class="line">						return false;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">				return ConatainLastExtensions.Contains (Path.GetExtension (s).ToLower ());</div><div class="line">			&#125;).ToArray ();</div><div class="line">		string splitString = &quot;Assets/&quot;;</div><div class="line">		for (int i = 0; i &lt; files.Length; i++) &#123;</div><div class="line">			string fullName = files [i].Substring (files [i].IndexOf(splitString));</div><div class="line">			TextureImporter importer = AssetImporter.GetAtPath(fullName) as TextureImporter;</div><div class="line">//			TextureImporter textureImporter = (TextureImporter)TextureImporter.GetAtPath (fullName);</div><div class="line">			if (importer.spritePackingTag == &quot;&quot;) &#123;</div><div class="line">				Log.Error (fullName);</div><div class="line">			&#125;</div><div class="line">	</div><div class="line">		&#125;</div><div class="line">		Log.Trace (&quot;查找结束&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p>1.<br>Resources資料夾裡的資源越多，程式的啟動畫面時間就越長。 <a href="http://unitytaiwan.blogspot.hk/2016/07/unity.html" target="_blank" rel="external">链接</a></p>
+<p>2.<br>    Draw Call</p>
+<pre><code>Batching is only possible for objects that share the same material pointer.
+Batching doesn&apos;t work on objects that have multiple materials.
+Implicit state changes (e.g. lightmap index) can cause batching to end early.
+</code></pre><p>3.<br>    adb调试android</p>
+<pre><code>adb forward tcp:54999 localabstract:Unity-{insert bundle identifier here}
+</code></pre><ol>
+<li>Script Performance<a href="https://developer.oculus.com/documentation/game-engines/latest/concepts/unity-perf/#unity-perf-workflow-further-mobile" target="_blank" rel="external">链接</a></li>
+</ol>
+<p>Unity’s C# implementation is fast, and slowdown from script is usually the result of a mistake and/or an inadvertent block on slow external operations such as memory allocation. The Unity Profiler can help you find and fix these scripts.</p>
+<p>Try to avoid foreach, lamda, and LINQ structures as these allocate memory needlessly at runtime. Use a for loop instead. Also, be wary of loops that concatenate strings.</p>
+<p>GameObject creation and destruction takes time. If you have a lot of objects to create and destroy (say, several hundred in a frame), we recommend pooling them.</p>
+<p>Don’t move colliders unless they have a rigidbody on them. Creating a rigidbody and setting isKinematic will stop physics from doing anything but will make that collider cheap to move. This is because Unity maintains two collider structures, a static tree and a dynamic tree, and the static tree has to be completely rebuilt every time any static object moves.</p>
+<p>Note that coroutines execute in the main thread, and you can have multiple instances of the same coroutine running on the same script.</p>
+<p>We recommend targeting around 1-2 ms maximum for all Mono execution time.</p>
+<p>4.<a href="http://qiankanglai.me/2015/08/15/LoopScrollRect/" target="_blank" rel="external">优化scrollRect</a></p>
+
       
     </div>
     
@@ -243,18 +268,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/08/08/Unity小结-持续更新/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/08/10/Unity的Image添加时raycastTarget默认为false/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Unity小结(持续更新)
+          Unity的Image添加时raycastTarget默认为false
         
       </div>
     </a>
   
   
-    <a href="/2016/08/05/Unity中Material修改shader后避免修改Mat文件/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Unity中Material修改shader后避免修改Mat文件</div>
+    <a href="/2016/08/05/Unity中查找未打成图集的图片/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Unity中查找未打成图集的图片</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -289,7 +314,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Unity中查找未打成图集的图片" data-title="Unity中查找未打成图集的图片" data-url="http://yoursite.com/2016/08/05/Unity中查找未打成图集的图片/"></div>
+	<div class="ds-thread" data-thread-key="Unity小结-持续更新" data-title="Unity小结(持续更新)" data-url="http://yoursite.com/2016/08/08/Unity小结-持续更新/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

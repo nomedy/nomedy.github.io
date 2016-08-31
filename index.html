@@ -195,6 +195,188 @@
 
       <div class="body-wrap">
   
+    <article id="post-Unity游戏优化总结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/29/Unity游戏优化总结/" class="article-date">
+  	<time datetime="2016-08-29T11:55:29.000Z" itemprop="datePublished">2016-08-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/29/Unity游戏优化总结/">Unity2D游戏优化总结</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.不要用foreach遍历对象，会产生额外内存，可<a href="http://www.theappguruz.com/blog/foreach-loop-optimization" target="_blank" rel="external">参照网站</a></p>
+<p>2.帧速尽量调为30fps或以下，尤其是没有动画效果的时候。</p>
+<p>3.仅仅把input control的函数放入到 Update()函数中,尤其是getComponent函数和for循环，其它的完全可以用coroutines和delegate代替， 删除不用的Update()。</p>
+<p>4.List和Dictionary的正确选择。objects一样不需要search不要用Lists；不要search且objects是动态的删除添加的用Lists；快速查询获得的需用Dictionary</p>
+<p>5.2d游戏没有3d方面的特有渲染，设置中的Graphics质量可以调为最低。</p>
+<p>6.xcode的instruments tool工具可以很方便的测出Gpu使用率、pixels、vertices等占用信息。<a href="http://whaison.jugem.jp/?eid=798" target="_blank" rel="external">参照网站</a></p>
+<p>7.Image图片一般情况下是不需要Material的，指定了Sprite即可，增加一个Add的Material会增加4个顶点渲染。</p>
+<p>8.一个显示的ui的图片尽量打到一个图集里，且图集大小尽量不超过1024，否则一些android机型加载很卡。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Unity的Image添加时raycastTarget默认为false" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/10/Unity的Image添加时raycastTarget默认为false/" class="article-date">
+  	<time datetime="2016-08-10T07:32:24.000Z" itemprop="datePublished">2016-08-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/10/Unity的Image添加时raycastTarget默认为false/">Unity的Image添加时raycastTarget默认为false</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Unity的Image添加时raycastTarget很多时候是不需要监听其行为，默认为false</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">[MenuItem(&quot;GameObject/UI/Image&quot;)]</div><div class="line">	static void CreatImage()</div><div class="line">	&#123;</div><div class="line">		if(Selection.activeTransform)</div><div class="line">		&#123;</div><div class="line">			if(Selection.activeTransform.GetComponentInParent&lt;Canvas&gt;())</div><div class="line">			&#123;</div><div class="line">				GameObject go = new GameObject(&quot;image&quot;,typeof(Image));</div><div class="line">				go.GetComponent&lt;Image&gt;().raycastTarget = false;</div><div class="line">				go.transform.SetParent(Selection.activeTransform);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Unity小结-持续更新" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/08/Unity小结-持续更新/" class="article-date">
+  	<time datetime="2016-08-08T03:22:32.000Z" itemprop="datePublished">2016-08-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/08/Unity小结-持续更新/">Unity小结(持续更新)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.<br>Resources資料夾裡的資源越多，程式的啟動畫面時間就越長。 <a href="http://unitytaiwan.blogspot.hk/2016/07/unity.html" target="_blank" rel="external">链接</a></p>
+<p>2.<br>    Draw Call</p>
+<pre><code>Batching is only possible for objects that share the same material pointer.
+Batching doesn&apos;t work on objects that have multiple materials.
+Implicit state changes (e.g. lightmap index) can cause batching to end early.
+</code></pre><p>3.<br>    adb调试android</p>
+<pre><code>adb forward tcp:54999 localabstract:Unity-{insert bundle identifier here}
+</code></pre><ol>
+<li>Script Performance<a href="https://developer.oculus.com/documentation/game-engines/latest/concepts/unity-perf/#unity-perf-workflow-further-mobile" target="_blank" rel="external">链接</a></li>
+</ol>
+<p>Unity’s C# implementation is fast, and slowdown from script is usually the result of a mistake and/or an inadvertent block on slow external operations such as memory allocation. The Unity Profiler can help you find and fix these scripts.</p>
+<p>Try to avoid foreach, lamda, and LINQ structures as these allocate memory needlessly at runtime. Use a for loop instead. Also, be wary of loops that concatenate strings.</p>
+<p>GameObject creation and destruction takes time. If you have a lot of objects to create and destroy (say, several hundred in a frame), we recommend pooling them.</p>
+<p>Don’t move colliders unless they have a rigidbody on them. Creating a rigidbody and setting isKinematic will stop physics from doing anything but will make that collider cheap to move. This is because Unity maintains two collider structures, a static tree and a dynamic tree, and the static tree has to be completely rebuilt every time any static object moves.</p>
+<p>Note that coroutines execute in the main thread, and you can have multiple instances of the same coroutine running on the same script.</p>
+<p>We recommend targeting around 1-2 ms maximum for all Mono execution time.</p>
+<p>4.<a href="http://qiankanglai.me/2015/08/15/LoopScrollRect/" target="_blank" rel="external">优化scrollRect</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Unity中查找未打成图集的图片" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">

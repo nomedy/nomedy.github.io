@@ -4,21 +4,27 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Unity中查找未打成图集的图片 | On My Way</title>
+  <title>Unity2D游戏优化总结 | On My Way</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="写了个Unity小插件，能够遍历目录将没有打成图集的图片搜索出来WithOutFolders为不搜索的目录ConatainLastExtensions为搜索图片格式
-12345678910111213141516171819202122232425262728293031323334using UnityEngine;using System.Collections;using UnityEdit">
+  <meta name="description" content="1.不要用foreach遍历对象，会产生额外内存，可参照网站
+2.帧速尽量调为30fps或以下，尤其是没有动画效果的时候。
+3.仅仅把input control的函数放入到 Update()函数中,尤其是getComponent函数和for循环，其它的完全可以用coroutines和delegate代替， 删除不用的Update()。
+4.List和Dictionary的正确选择。objects一">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Unity中查找未打成图集的图片">
-<meta property="og:url" content="http://yoursite.com/2016/08/05/Unity中查找未打成图集的图片/index.html">
+<meta property="og:title" content="Unity2D游戏优化总结">
+<meta property="og:url" content="http://yoursite.com/2016/08/29/Unity游戏优化总结/index.html">
 <meta property="og:site_name" content="On My Way">
-<meta property="og:description" content="写了个Unity小插件，能够遍历目录将没有打成图集的图片搜索出来WithOutFolders为不搜索的目录ConatainLastExtensions为搜索图片格式
-12345678910111213141516171819202122232425262728293031323334using UnityEngine;using System.Collections;using UnityEdit">
-<meta property="og:updated_time" content="2016-08-05T09:59:30.000Z">
+<meta property="og:description" content="1.不要用foreach遍历对象，会产生额外内存，可参照网站
+2.帧速尽量调为30fps或以下，尤其是没有动画效果的时候。
+3.仅仅把input control的函数放入到 Update()函数中,尤其是getComponent函数和for循环，其它的完全可以用coroutines和delegate代替， 删除不用的Update()。
+4.List和Dictionary的正确选择。objects一">
+<meta property="og:updated_time" content="2016-08-31T02:59:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Unity中查找未打成图集的图片">
-<meta name="twitter:description" content="写了个Unity小插件，能够遍历目录将没有打成图集的图片搜索出来WithOutFolders为不搜索的目录ConatainLastExtensions为搜索图片格式
-12345678910111213141516171819202122232425262728293031323334using UnityEngine;using System.Collections;using UnityEdit">
+<meta name="twitter:title" content="Unity2D游戏优化总结">
+<meta name="twitter:description" content="1.不要用foreach遍历对象，会产生额外内存，可参照网站
+2.帧速尽量调为30fps或以下，尤其是没有动画效果的时候。
+3.仅仅把input control的函数放入到 Update()函数中,尤其是getComponent函数和for循环，其它的完全可以用coroutines和delegate代替， 删除不用的Update()。
+4.List和Dictionary的正确选择。objects一">
   
     <link rel="alternative" href="/atom.xml" title="On My Way" type="application/atom+xml">
   
@@ -200,11 +206,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-Unity中查找未打成图集的图片" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Unity游戏优化总结" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/08/05/Unity中查找未打成图集的图片/" class="article-date">
-  	<time datetime="2016-08-05T09:54:12.000Z" itemprop="datePublished">2016-08-05</time>
+      <a href="/2016/08/29/Unity游戏优化总结/" class="article-date">
+  	<time datetime="2016-08-29T11:55:29.000Z" itemprop="datePublished">2016-08-29</time>
 </a>
     </div>
   
@@ -217,7 +223,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Unity中查找未打成图集的图片
+      Unity2D游戏优化总结
     </h1>
   
 
@@ -233,8 +239,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>写了个Unity小插件，能够遍历目录将没有打成图集的图片搜索出来<br>WithOutFolders为不搜索的目录<br>ConatainLastExtensions为搜索图片格式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">using UnityEngine;</div><div class="line">using System.Collections;</div><div class="line">using UnityEditor;</div><div class="line">using System.IO;</div><div class="line">using System.Collections.Generic;</div><div class="line">using System.Linq;</div><div class="line">public class FindUnDoTag  &#123;</div><div class="line">	[MenuItem(&quot;Libs/查找未打成图集的图片&quot;)]</div><div class="line">	private static void FindUnTagResource()</div><div class="line">	&#123;</div><div class="line">		List&lt;string&gt; WithOutFolders = new List&lt;string&gt;()&#123;&quot;Assets/Libs&quot;,&quot;Assets/Platforms&quot;,&quot;Assets/Plugins&quot;,&quot;Assets/Resources&quot;&#125;;</div><div class="line">		List&lt;string&gt; ConatainLastExtensions = new List&lt;string&gt;()&#123;&quot;.png&quot;&#125;;</div><div class="line">		string[] files = Directory.GetFiles (Application.dataPath, &quot;*.*&quot;, SearchOption.AllDirectories)</div><div class="line">			.Where (s =&gt;&#123; </div><div class="line">				for(int k=0;k&lt;WithOutFolders.Count;k++)&#123;</div><div class="line">					if(s.Contains(WithOutFolders[k]))&#123;</div><div class="line">						return false;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">				return ConatainLastExtensions.Contains (Path.GetExtension (s).ToLower ());</div><div class="line">			&#125;).ToArray ();</div><div class="line">		string splitString = &quot;Assets/&quot;;</div><div class="line">		for (int i = 0; i &lt; files.Length; i++) &#123;</div><div class="line">			string fullName = files [i].Substring (files [i].IndexOf(splitString));</div><div class="line">			TextureImporter importer = AssetImporter.GetAtPath(fullName) as TextureImporter;</div><div class="line">//			TextureImporter textureImporter = (TextureImporter)TextureImporter.GetAtPath (fullName);</div><div class="line">			if (importer.spritePackingTag == &quot;&quot;) &#123;</div><div class="line">				Log.Error (fullName);</div><div class="line">			&#125;</div><div class="line">	</div><div class="line">		&#125;</div><div class="line">		Log.Trace (&quot;查找结束&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p>1.不要用foreach遍历对象，会产生额外内存，可<a href="http://www.theappguruz.com/blog/foreach-loop-optimization" target="_blank" rel="external">参照网站</a></p>
+<p>2.帧速尽量调为30fps或以下，尤其是没有动画效果的时候。</p>
+<p>3.仅仅把input control的函数放入到 Update()函数中,尤其是getComponent函数和for循环，其它的完全可以用coroutines和delegate代替， 删除不用的Update()。</p>
+<p>4.List和Dictionary的正确选择。objects一样不需要search不要用Lists；不要search且objects是动态的删除添加的用Lists；快速查询获得的需用Dictionary</p>
+<p>5.2d游戏没有3d方面的特有渲染，设置中的Graphics质量可以调为最低。</p>
+<p>6.xcode的instruments tool工具可以很方便的测出Gpu使用率、pixels、vertices等占用信息。<a href="http://whaison.jugem.jp/?eid=798" target="_blank" rel="external">参照网站</a></p>
+<p>7.Image图片一般情况下是不需要Material的，指定了Sprite即可，增加一个Add的Material会增加4个顶点渲染。</p>
+<p>8.一个显示的ui的图片尽量打到一个图集里，且图集大小尽量不超过1024，否则一些android机型加载很卡。</p>
+
       
     </div>
     
@@ -243,18 +256,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/08/08/Unity小结-持续更新/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Unity小结(持续更新)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/08/05/Unity中Material修改shader后避免修改Mat文件/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Unity中Material修改shader后避免修改Mat文件</div>
+    <a href="/2016/08/10/Unity的Image添加时raycastTarget默认为false/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Unity的Image添加时raycastTarget默认为false</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -289,7 +293,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Unity中查找未打成图集的图片" data-title="Unity中查找未打成图集的图片" data-url="http://yoursite.com/2016/08/05/Unity中查找未打成图集的图片/"></div>
+	<div class="ds-thread" data-thread-key="Unity游戏优化总结" data-title="Unity2D游戏优化总结" data-url="http://yoursite.com/2016/08/29/Unity游戏优化总结/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
